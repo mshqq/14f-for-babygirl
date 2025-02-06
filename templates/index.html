@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Surprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="question">Ты станешь моей валентинкой?</h1>
+      <button id="yes" onclick="playVideo()">Да</button>
+      <button id="no" onclick="moveNoButton()">Нет</button>
+    </div>
+    <video id="video">
+      <source src="/static/video/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <script>
+      let attempts = 0;
+
+      // Запуск видео
+      function playVideo() {
+        const question = document.getElementById("question");
+        const yesButton = document.getElementById("yes");
+        const noButton = document.getElementById("no");
+        const video = document.getElementById("video");
+
+        question.innerText = "❤️";
+
+        if (yesButton) yesButton.style.display = "none";
+        if (noButton) noButton.style.display = "none";
+        document.querySelectorAll(".heart").forEach((heart) => heart.remove());
+
+        video.style.display = "block";
+        video.play();
+      }
+
+      function moveNoButton() {
+        // Увеличиваем кнопку "Да" каждый раз, когда нажимают "Нет"
+        increaseSize();
+
+        if (attempts < 2) {
+          let noButton = document.getElementById("no");
+          let x = Math.random() * (window.innerWidth - 100);
+          let y = Math.random() * (window.innerHeight - 50);
+          noButton.style.position = "absolute";
+          noButton.style.left = `${x}px`;
+          noButton.style.top = `${y}px`;
+          attempts++;
+        } else {
+          document.getElementById("no").remove();
+          document.getElementById("question").innerText = "Ну пожаааалуйста";
+        }
+      }
+
+      // Функция увеличения кнопки "Да" и её текста
+      function increaseSize() {
+        const yesButton = document.getElementById("yes");
+
+        // Текущие размеры кнопки
+        let currentWidth = parseInt(window.getComputedStyle(yesButton).width);
+        let currentHeight = parseInt(window.getComputedStyle(yesButton).height);
+        let currentFontSize = parseInt(
+          window.getComputedStyle(yesButton).fontSize
+        );
+
+        // Увеличиваем
+        let newWidth = currentWidth * 1.5;
+        let newHeight = currentHeight * 1.5;
+        let newFontSize = currentFontSize * 1.5;
+
+        yesButton.style.width = `${newWidth}px`;
+        yesButton.style.height = `${newHeight}px`;
+        yesButton.style.fontSize = `${newFontSize}px`;
+
+        // Проверка на коллизию
+        let x = Math.random() * (window.innerWidth - newWidth);
+        let y = Math.random() * (window.innerHeight - newHeight);
+        yesButton.style.left = `${x}px`;
+        yesButton.style.top = `${y}px`;
+      }
+
+      // Анимации сердец
+      document.addEventListener("DOMContentLoaded", () => {
+        const heartImage = "/static/img/heart.png";
+        for (let i = 0; i < 20; i++) {
+          let heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.style.left = `${Math.random() * 100}vw`;
+          heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+          heart.style.backgroundImage = `url(${heartImage})`;
+          document.body.appendChild(heart);
+        }
+      });
+    </script>
+  </body>
+</html>

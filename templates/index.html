@@ -51,6 +51,7 @@
       <source src="/static/video/video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    <p id="message" style="display: none">Люблю тебя, котёнок! 🎉</p>
     <script>
       let attempts = 0;
 
@@ -127,6 +128,9 @@
           heart.style.backgroundImage = `url(${heartImage})`;
           document.body.appendChild(heart);
         }
+      });
+      document.getElementById("myVideo").addEventListener("ended", function () {
+        document.getElementById("message").style.display = "block";
       });
     </script>
   </body>

@@ -64,3 +64,9 @@ video {
         opacity: 0.1;
     }
 }
+
+#afterMessage {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}

@@ -51,7 +51,7 @@
       <source src="/static/video/video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <p id="message" style="display: none">Люблю тебя, котёнок! 🎉</p>
+    <p id="afterMessage" style="display: none">love you babygirl🎉</p>
     <script>
       let attempts = 0;
 
@@ -129,8 +129,11 @@
           document.body.appendChild(heart);
         }
       });
-      document.getElementById("myVideo").addEventListener("ended", function () {
-        document.getElementById("message").style.display = "block";
+      document.getElementById("video").addEventListener("ended", function () {
+        document.getElementById("afterMessage").style.display = "block";
+        let vid = document.getElementById("video");
+        vid.style.display = "none";
+        document.getElementById("question").style.fontSize = "150px";
       });
     </script>
   </body>

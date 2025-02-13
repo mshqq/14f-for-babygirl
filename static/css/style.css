@@ -74,3 +74,11 @@ video {
     display: flex;
     flex-direction: column;
 }
+
+#afterText {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+}

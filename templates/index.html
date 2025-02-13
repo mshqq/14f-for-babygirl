@@ -51,9 +51,10 @@
       <source src="/static/video/video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    <div id="afterText" style="display: none; z-index: 6;">for u babygirl @otkisunya</div>
     <div id="afterMessage" style="display: none; z-index: 5">
       <img src="/static/img/cats.gif" alt="cats hugs"></img>
-      <div>for u babygirl @otkisunya</div>
+
     </div>
     <script>
       let attempts = 0;
@@ -134,6 +135,7 @@
       });
       document.getElementById("video").addEventListener("ended", function () {
         document.getElementById("afterMessage").style.display = "block";
+        document.getElementById("afterText").style.display = "block";
         let vid = document.getElementById("video");
         vid.style.display = "none";
         document.getElementById("question").style.fontSize = "150px";

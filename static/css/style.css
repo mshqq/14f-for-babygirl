@@ -15,12 +15,13 @@ body {
 .container {
     text-align: center;
     z-index: 1;
+}
 
 #question {
     color: white;
 }    
 
-}
+
 button {
     padding: 10px 20px;
     font-size: 18px;
@@ -28,6 +29,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     background: #ff758c;
+    outline: none;
     color: white;
     margin: 10px;
     font-family: "Montserrat", serif;

@@ -53,6 +53,7 @@
     </video>
     <div id="afterMessage" style="display: none; z-index: 5">
       <img src="/static/img/cats.gif" alt="cats hugs"></img>
+      <div>for u babygirl @otkisunya</div>
     </div>
     <script>
       let attempts = 0;
@@ -64,7 +65,7 @@
         const noButton = document.getElementById("no");
         const video = document.getElementById("video");
 
-        question.innerText = "for u babygirl @otkisunya❤️";
+        question.innerText = "❤️";
 
         if (yesButton) yesButton.style.display = "none";
         if (noButton) noButton.style.display = "none";
@@ -136,7 +137,7 @@
         let vid = document.getElementById("video");
         vid.style.display = "none";
         document.getElementById("question").style.fontSize = "150px";
-        document.querySelectorAll(".heart").forEach((heart) => heart.style.display = "block");
+        document.querySelectorAll(".heart").forEach((heart) => heart.style.display = "flex");
       });
     </script>
   </body>
